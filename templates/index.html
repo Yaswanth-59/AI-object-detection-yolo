@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Vision | Object Detection</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">◉</span>
+            AI VISION
+        </div>
+
+        <div class="nav-text">
+            YOLO Deep Learning
+        </div>
+    </nav>
+
+
+    <!-- Main Section -->
+    <main class="main-container">
+
+        <section class="hero">
+
+            <div class="badge">
+                ⚡ POWERED BY YOLO AI
+            </div>
+
+            <h1>
+                Intelligent
+                <span>Object Detection</span>
+            </h1>
+
+            <p class="hero-text">
+                Upload an image and let our AI identify objects,
+                locate them with bounding boxes, and calculate
+                detection confidence in real time.
+            </p>
+
+        </section>
+
+
+        <!-- Upload Card -->
+        <section class="upload-card">
+
+            <div class="upload-icon">
+                📷
+            </div>
+
+            <h2>Upload Your Image</h2>
+
+            <p>
+                Select an image to start AI-powered object detection
+            </p>
+
+
+            <form action="/predict"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <label class="file-box">
+
+                    <div class="file-content">
+
+                        <div class="file-icon">
+                            🖼️
+                        </div>
+
+                        <div>
+                            <strong>Choose an image</strong>
+
+                            <small>
+                                JPG, JPEG, PNG or WEBP
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <input type="file"
+                           name="image"
+                           accept="image/*"
+                           required
+                           onchange="showFileName(this)">
+
+                    <span class="browse-btn">
+                        Browse
+                    </span>
+
+                </label>
+
+
+                <p id="file-name">
+                    No file selected
+                </p>
+
+
+                <button type="submit"
+                        class="detect-btn">
+
+                    <span>🔍</span>
+                    Detect Objects
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Features -->
+        <section class="features">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤖
+                </div>
+
+                <h3>AI Powered</h3>
+
+                <p>
+                    Deep learning based YOLO object detection
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎯
+                </div>
+
+                <h3>Accurate Detection</h3>
+
+                <p>
+                    Detect multiple objects with confidence scores
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>Fast Processing</h3>
+
+                <p>
+                    Get AI detection results within seconds
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- How it works -->
+        <section class="how-section">
+
+            <h2>How It Works</h2>
+
+            <p class="section-subtitle">
+                Simple three-step AI detection process
+            </p>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>Upload</h3>
+
+                    <p>
+                        Select an image from your computer
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>Analyze</h3>
+
+                    <p>
+                        YOLO AI analyzes the image
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>Result</h3>
+
+                    <p>
+                        View detected objects and confidence
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 AI Vision • Deep Learning Object Detection
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function showFileName(input) {
+
+            const fileName = document.getElementById("file-name");
+
+            if (input.files.length > 0) {
+
+                fileName.innerHTML =
+                    "✓ Selected: " +
+                    input.files[0].name;
+
+                fileName.classList.add("selected");
+
+            } else {
+
+                fileName.innerHTML =
+                    "No file selected";
+
+                fileName.classList.remove("selected");
+            }
+        }
+
+    </script>
+
+</body>
+</html>
