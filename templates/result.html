@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Vision | Detection Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">◉</span>
+            AI VISION
+        </div>
+
+        <div class="nav-text">
+            YOLO Deep Learning
+        </div>
+
+    </nav>
+
+
+    <!-- Main -->
+    <main class="main-container">
+
+        <!-- Header -->
+        <section class="hero result-hero">
+
+            <div class="badge">
+                ✓ AI ANALYSIS COMPLETE
+            </div>
+
+            <h1>
+                Detection
+                <span>Results</span>
+            </h1>
+
+            <p class="hero-text">
+                Our YOLO deep learning model analyzed your image
+                and identified the following objects.
+            </p>
+
+        </section>
+
+
+        <!-- Results -->
+        <section class="result-grid">
+
+
+            <!-- IMAGE -->
+            <div class="card image-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Analyzed Image</h2>
+
+                        <p>
+                            Objects detected with bounding boxes
+                        </p>
+                    </div>
+
+                    <div class="ai-status">
+                        ● AI Complete
+                    </div>
+
+                </div>
+
+
+                <div class="image-container">
+
+                    <img
+                        class="result-image"
+                        src="{{ image_url }}"
+                        alt="AI Detection Result">
+
+                </div>
+
+            </div>
+
+
+            <!-- DETECTIONS -->
+            <div class="card detection-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>Detected Objects</h2>
+
+                        <p>
+                            {{ count }} object(s) found
+                        </p>
+
+                    </div>
+
+                    <div class="count-badge">
+                        {{ count }}
+                    </div>
+
+                </div>
+
+
+                {% if detections %}
+
+                    <div class="detections-list">
+
+                        {% for item in detections %}
+
+                        <div class="detection">
+
+                            <div class="object-info">
+
+                                <div class="object-icon">
+                                    🎯
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        {{ item.name | title }}
+                                    </strong>
+
+                                    <small>
+                                        Object detected
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="confidence">
+
+                                <strong>
+                                    {{ item.confidence }}%
+                                </strong>
+
+                                <div class="confidence-bar">
+
+                                    <div
+                                        class="confidence-fill"
+                                        style="width: {{ item.confidence }}%;">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="no-result">
+
+                        <div class="no-result-icon">
+                            🔎
+                        </div>
+
+                        <h3>
+                            No Objects Found
+                        </h3>
+
+                        <p>
+                            The AI model could not detect any
+                            supported objects in this image.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+
+                <a
+                    href="/"
+                    class="button detect-again">
+
+                    ← Detect Another Image
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI Information -->
+        <section class="analysis-info">
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    🤖
+                </div>
+
+                <div>
+
+                    <strong>
+                        AI Model
+                    </strong>
+
+                    <p>
+                        YOLO Deep Learning
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <strong>
+                        Detection
+                    </strong>
+
+                    <p>
+                        {{ count }} object(s)
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <strong>
+                        Processing
+                    </strong>
+
+                    <p>
+                        Completed
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 AI Vision • YOLO Object Detection System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
